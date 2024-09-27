@@ -1,3 +1,5 @@
+const { EndOfLineState } = require("typescript");
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -17,7 +19,15 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
+    'prettier/prettier': [
+      'error', {
+        'endOfLine': 'auto',
+        'singleQuote': true,
+        'semi': true,
+        'trailingComma': 'all',
+      }
+    ],
+    '@typescript-eslint/interface-name-prefix': 'on',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
