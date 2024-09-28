@@ -11,6 +11,7 @@ jobs:
 
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_EMAIL: ${{ secrets.DOCKER_EMAIL }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     steps:
@@ -19,6 +20,6 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker login -u $DOCKER_EMAIL -p $DOCKER_PASSWORD
           docker build -t $DOCKER_USERNAME/pettech-stock:latest --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} --build-arg JWT_SECRET=${{ secrets.JWT_SECRET }} .
           docker push $DOCKER_USERNAME/pettech-stock:latest
